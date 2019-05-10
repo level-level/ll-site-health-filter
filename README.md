@@ -21,7 +21,7 @@ You can still view Site Health information, if the requirements below are follow
 More information about these topics can be found in the [WP_Site_Health](https://developer.wordpress.org/reference/classes/wp_site_health/) and [WP_Debug_data](https://developer.wordpress.org/reference/classes/wp_debug_data/) documentation.
 
 ## Author
----
+
 Level Level
 
 Website: [https://level-level.com](https://level-level.com)
