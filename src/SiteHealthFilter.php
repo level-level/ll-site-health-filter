@@ -39,7 +39,7 @@ class SiteHealthFilter {
 
 		// If we use all tricks to display the status information, display it.
  		if($this->debug) {
- 			return $debug_info;
+ 			return $status_tests;
  		}
 
  		// It looks like we shouldn't display status information, so show only limited info.
