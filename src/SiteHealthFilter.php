@@ -19,11 +19,16 @@ class SiteHealthFilter {
 		add_filter( 'debug_information', array( $this, 'remove_debug_info' ) );
 	}
 
+	/**
+	 * Detects if Level Level wants to display debug information
+	 *
+	 * @return void
+	 */
 	public function set_debug_mode() {
-		if(
+		if (
 			(
 				( defined( 'WP_DEBUG' ) ? WP_DEBUG : false )
-				|| ( filter_input(INPUT_GET, 'show_debug', FILTER_SANITIZE_SPECIAL_CHARS) === 'true' )
+				|| ( filter_input( INPUT_GET, 'show_debug', FILTER_SANITIZE_SPECIAL_CHARS ) === 'true' )
 			)
 			&& current_user_can( 'administrator' )
 		) {
@@ -38,21 +43,13 @@ class SiteHealthFilter {
 		 */
 
 		// If we use all tricks to display the status information, display it.
- 		if($this->debug) {
- 			return $status_tests;
- 		}
+		if ( $this->debug ) {
+			return $status_tests;
+		}
 
- 		// It looks like we shouldn't display status information, so show only limited info.
+		// It looks like we shouldn't display status information, so show only limited info.
 		$status_tests = array(
 			'direct' => array(
-				// 'wordpress_version' => array(
-				// 	'label' => __( 'WordPress Version' ),
-				// 	'test'  => 'wordpress_version',
-				// ),
-				// 'utf8mb4_support'   => array(
-				// 	'label' => __( 'MySQL utf8mb4 support' ),
-				// 	'test'  => 'utf8mb4_support',
-				// ),
 				'ssl_support'       => array(
 					'label' => __( 'Secure communication' ),
 					'test'  => 'ssl_support',
@@ -88,37 +85,37 @@ class SiteHealthFilter {
 		 */
 
 		// If we use all tricks to display the debug information, display it.
-		if($this->debug) {
+		if ( $this->debug ) {
 			return $debug_info;
 		}
 
 		// It looks like we shouldn't display debug information, so show only limited info.
-		$is_ssl                 = is_ssl();
-		$core_version           = get_bloginfo( 'version' );
-		$debug_info = array(
+		$is_ssl       = is_ssl();
+		$core_version = get_bloginfo( 'version' );
+		$debug_info   = array(
 			'wp-core' => array(
 				'label'  => __( 'WordPress' ),
 				'fields' => array(
-					'version'                => array(
+					'version'       => array(
 						'label' => __( 'Version' ),
 						'value' => $core_version,
 						'debug' => $core_version,
 					),
-					'site_language'          => array(
+					'site_language' => array(
 						'label' => __( 'Site Language' ),
 						'value' => get_locale(),
 					),
-					'home_url'               => array(
+					'home_url'      => array(
 						'label'   => __( 'Home URL' ),
 						'value'   => get_bloginfo( 'url' ),
 						'private' => true,
 					),
-					'site_url'               => array(
+					'site_url'      => array(
 						'label'   => __( 'Site URL' ),
 						'value'   => get_bloginfo( 'wpurl' ),
 						'private' => true,
 					),
-					'https_status'           => array(
+					'https_status'  => array(
 						'label' => __( 'Is this site using HTTPS?' ),
 						'value' => $is_ssl ? __( 'Yes' ) : __( 'No' ),
 						'debug' => $is_ssl,
