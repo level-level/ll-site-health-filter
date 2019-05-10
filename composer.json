@@ -1,0 +1,19 @@
+{
+    "name": "level-level/ll-site-health-filter",
+    "description": "Removes sensitive data from the Wordpress Site Health tool.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Level Level",
+            "email": "info@level-level.com"
+        }
+    ],
+    "autoload": {
+      "psr-4":{
+        "Clarkson\\Filters\\": "src"
+      },
+      "files": ["ll-site-health-filter.php"]
+    },
+    "require": {}
+}
