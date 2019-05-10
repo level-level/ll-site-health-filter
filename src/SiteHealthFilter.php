@@ -16,8 +16,8 @@ class SiteHealthFilter
 	}
 
 	public function register_hooks() {
-		add_filter( 'site_status_tests', 'remove_status_tests' );
-		add_filter( 'debug_information', 'remove_debug_info' );
+		add_filter( 'site_status_tests', array( $this, 'remove_status_tests' ) );
+		add_filter( 'debug_information', array( $this, 'remove_debug_info' ) );
 	}
 
 	public function remove_status_tests( $status_tests ) {

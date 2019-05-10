@@ -4,6 +4,6 @@ use Clarkson\Filters\SiteHealthFilter;
 
 // Skip loading the site health filter if not in a WordPress context
 if ( ! defined('WPINC') ) {
-  return;
+	return;
 }
-$siteHealthManager = new SiteHealthFilter();
+( new SiteHealthFilter() )->register_hooks();
