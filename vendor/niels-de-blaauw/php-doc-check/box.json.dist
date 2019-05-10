@@ -1,6 +1,0 @@
-{
-	"banner-file": "LICENSE",
-	"compactors": [
-		"KevinGH\\Box\\Compactor\\Php"
-	]
-}

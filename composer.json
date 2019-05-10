@@ -9,13 +9,17 @@
             "email": "info@level-level.com"
         }
     ],
+    "config": {
+        "sort-packages": true
+    },
     "autoload": {
       "psr-4":{
         "Clarkson\\Filters\\": "src"
       },
       "files": ["ll-site-health-filter.php"]
     },
-    "require": {},
+    "require": {
+    },
     "scripts": {
         "test":[
             "echo Running tests",
@@ -29,8 +33,8 @@
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
-        "wp-coding-standards/wpcs": "^2.1",
         "niels-de-blaauw/php-doc-check": "^0.2.2",
-        "phpcompatibility/php-compatibility": "^9.1"
+        "phpcompatibility/php-compatibility": "^9.1",
+        "wp-coding-standards/wpcs": "^2.1"
     }
 }
