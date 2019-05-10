@@ -1,9 +1,15 @@
 workflow "Test" {
   on = "push"
-  resolves = ["docker://composer:1.8"]
+  resolves = ["test"]
 }
 
-action "docker://composer:1.8" {
+action "install" {
   uses = "docker://composer:1.8"
   runs = "composer install"
+}
+
+action "test" {
+  uses = "docker://composer:1.8"
+  runs = "composer test"
+  needs = ["install"]
 }
