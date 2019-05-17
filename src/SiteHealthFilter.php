@@ -21,9 +21,9 @@ class SiteHealthFilter {
 	/**
 	 * Detects if Level Level wants to display debug information
 	 *
-	 * @return void
+	 * @return bool
 	 */
-	public static function is_debug_mode() {
+	public static function is_debug_mode() : bool {
 		if (
 			(
 				( defined( 'WP_DEBUG' ) ? WP_DEBUG : false )

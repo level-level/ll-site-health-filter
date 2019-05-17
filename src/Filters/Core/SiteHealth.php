@@ -17,7 +17,7 @@ class SiteHealth {
 		add_filter( 'site_status_tests', array( $this, 'remove_status_tests' ) );
 	}
 
-	public function remove_status_tests( $status_tests ) {
+	public function remove_status_tests( array $status_tests ) : array {
 		/**
 		 * We want to prevent the possibility that WordPress adds new sensitive data.
 		 * Therefore we don't use the unset() function explained by wordpress in <https://make.wordpress.org/core/2019/04/25/site-health-check-in-5-2/>
