@@ -13,7 +13,7 @@ use Clarkson\Filters\SiteHealth\SiteHealthFilter;
  * @subpackage Filters\SiteHealth\Filters\Core
  */
 class DebugInfo {
-	public function register_hooks() {x
+	public function register_hooks() {
 		add_filter( 'debug_information', array( $this, 'remove_debug_info' ) );
 	}
 
