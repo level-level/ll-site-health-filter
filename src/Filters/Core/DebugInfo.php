@@ -17,7 +17,7 @@ class DebugInfo {
 		add_filter( 'debug_information', array( $this, 'remove_debug_info' ) );
 	}
 
-	public function remove_debug_info( $debug_info ) {
+	public function remove_debug_info( array $debug_info ) : array {
 		/**
 		 * We want to prevent the possibility that WordPress adds new sensitive data.
 		 * Therefore we don't use the unset() function explained by wordpress in <https://make.wordpress.org/core/2019/04/25/site-health-check-in-5-2/>
