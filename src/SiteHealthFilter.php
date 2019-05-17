@@ -15,6 +15,7 @@ class SiteHealthFilter {
 
 	public function register_hooks() {
 		( new Core() )->register_hooks();
+		( new Plugins() )->register_hooks();
 	}
 
 	/**
