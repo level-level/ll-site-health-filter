@@ -14,7 +14,7 @@
     },
     "autoload": {
       "psr-4":{
-        "Clarkson\\Filters\\": "src"
+        "Clarkson\\Filters\\SiteHealth\\": "src"
       },
       "files": ["ll-site-health-filter.php"]
     },
