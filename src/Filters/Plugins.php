@@ -14,7 +14,7 @@ use Clarkson\Filters\SiteHealth\Filters\Plugins\WooCommerce;
  */
 class Plugins {
 	public function register_hooks() {
-		add_action( 'plugins_loaded', 'register_plugin_hooks' );
+		add_action( 'plugins_loaded', array( $this, 'register_plugin_hooks' ) );
 	}
 
 	public function register_plugin_hooks() {
