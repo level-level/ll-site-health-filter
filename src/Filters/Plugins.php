@@ -18,7 +18,7 @@ class Plugins {
 	}
 
 	public function register_plugin_hooks() {
-		if ( defined( 'WC_VERSION' ) )
+		if ( defined( 'WC_VERSION' ) ) {
 			( new WooCommerce() )->register_hooks();
 		}
 	}
