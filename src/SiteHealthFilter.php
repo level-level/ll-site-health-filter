@@ -2,6 +2,7 @@
 namespace Clarkson\Filters\SiteHealth;
 
 use Clarkson\Filters\SiteHealth\Filters\Core;
+use Clarkson\Filters\SiteHealth\Filters\Plugins;
 
 /**
  * SiteHealthFilter
