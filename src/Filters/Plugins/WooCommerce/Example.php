@@ -11,18 +11,20 @@ namespace Clarkson\Filters\SiteHealth\Filters\Plugins\WooCommerce;
  * @subpackage Filters\SiteHealth\Filters\Plugins\WooCommerce
  */
 class Example {
-	public function register_hooks() {
-		add_action( 'woocommerce_admin_status_content_example_slug', array( $this, 'add_example_admin_status_content_example_slug') );
+	private $slug = 'example';
 
-		add_filter( 'woocommerce_admin_status_tabs', array( $this, 'add_example_admin_status_tabs' ), 10, 1 );
+	public function register_hooks() {
+		add_action( 'woocommerce_admin_status_content_' . $this->$slug, array( $this, 'set_tabs') );
+
+		add_filter( 'woocommerce_admin_status_tabs', array( $this, 'set_content' ), 10, 1 );
 	}
 
-	public function add_example_admin_status_tabs( $tabs ){
-		$tabs['example'] = __( 'Example title', 'woocommerce' );
+	public function set_tabs( $tabs ){
+		$tabs[$this->$slug] = __( 'Example title', 'woocommerce' );
 		return $tabs;
 	}
 
-	public function add_example_admin_status_content_example_slug() {
+	public function set_content() {
 		?>
 		<div class="">
 			Example
