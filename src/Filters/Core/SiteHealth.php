@@ -4,14 +4,6 @@ namespace Clarkson\Filters\SiteHealth\Filters\Core;
 
 use Clarkson\Filters\SiteHealth\SiteHealthFilter;
 
-/**
- * SiteHealth
- *
- * @author Level Level <info@level-level.com>
- * @license GPLv3
- * @package Clarkson
- * @subpackage Filters\SiteHealth\Filters\Core
- */
 class SiteHealth {
 	public function register_hooks() {
 		add_filter( 'site_status_tests', array( $this, 'remove_status_tests' ) );

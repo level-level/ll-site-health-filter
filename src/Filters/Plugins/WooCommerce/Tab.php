@@ -4,16 +4,9 @@ namespace Clarkson\Filters\SiteHealth\Filters\Plugins\WooCommerce;
 
 use Clarkson\Filters\SiteHealth\SiteHealthFilter;
 
-/**
- * Tab
- *
- * @author Level Level <info@level-level.com>
- * @license GPLv3
- * @package Clarkson
- * @subpackage Filters\SiteHealth\Filters\Plugins\WooCommerce
- */
 abstract class Tab {
 	protected $slug;
+	protected $title;
 
 	abstract public function register_hooks();
 
@@ -27,7 +20,7 @@ abstract class Tab {
 	 */
 	public function set_content() {
 		if ( SiteHealthFilter::is_debug_mode() ) {
-			// Show default content, see https://github.com/woocommerce/woocommerce/blob/dda34e04551c9caf1ac5ddf79ed1dd9516824a98/includes/admin/views/html-admin-page-status.php
+			// Show default content, see url above
 			switch ( $this->slug ) {
 				case 'tools':
 					\WC_Admin_Status::status_tools();
@@ -52,10 +45,7 @@ abstract class Tab {
 		if ( SiteHealthFilter::is_debug_mode() ) {
 			return $tabs;
 		}
-
-		$title               = str_replace( '_', ' ', $this->slug );
-		$title               = ucfirst( $title );
-		$tabs[ $this->slug ] = __( $title, 'woocommerce' ); // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
+		$tabs[ $this->slug ] = $this->title;
 		return $tabs;
 	}
 
