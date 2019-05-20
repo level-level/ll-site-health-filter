@@ -1,6 +1,7 @@
 # Site Health Filter <IN DEVELOPMENT>
 
 Solution to hide sensitive data from the Wordpress Site Health Tool in the admin sidebar menu.
+It will do the same for the WooCommerce status page.
 
 ## How to install
 
@@ -18,7 +19,11 @@ You can still view Site Health information, if the requirements below are follow
 
 ## Wordpress reference
 
-More information about these topics can be found in the [WP_Site_Health](https://developer.wordpress.org/reference/classes/wp_site_health/) and [WP_Debug_data](https://developer.wordpress.org/reference/classes/wp_debug_data/) documentation.
+More information about the Wordpress status and debug pages can be found in the [WP_Site_Health](https://developer.wordpress.org/reference/classes/wp_site_health/) and [WP_Debug_data](https://developer.wordpress.org/reference/classes/wp_debug_data/) documentation.
+
+## WooCommerce reference
+
+More information about the WooCommerce status pages can be found in the [WC_Admin_Status](https://docs.woocommerce.com/wc-apidocs/class-WC_Admin_Status.html) documentation.
 
 ## Author
 
