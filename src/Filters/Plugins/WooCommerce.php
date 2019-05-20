@@ -14,6 +14,7 @@ use Clarkson\Filters\SiteHealth\Filters\Plugins\WooCommerce\Example;
  */
 class WooCommerce {
 	public function register_hooks() {
-		( new Example() )->register_hooks();
+		( new Status() )->register_hooks();
+		( new Tools() )->register_hooks();
 	}
 }
