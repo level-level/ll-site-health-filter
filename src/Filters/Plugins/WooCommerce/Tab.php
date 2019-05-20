@@ -2,6 +2,8 @@
 
 namespace Clarkson\Filters\SiteHealth\Filters\Plugins\WooCommerce;
 
+use Clarkson\Filters\SiteHealth\SiteHealthFilter;
+
 /**
  * Tab
  *
@@ -16,6 +18,21 @@ abstract class Tab {
 	abstract public function register_hooks();
 
 	public function set_content() {
+		if ( SiteHealthFilter::is_debug_mode() ) {
+			switch ($this->slug) {
+				case 'tools':
+					\WC_Admin_Status::status_tools();
+					break;
+				case 'logs':
+					\WC_Admin_Status::status_logs();
+					break;
+				default:
+					\WC_Admin_Status::status_report();
+					break;
+			}
+			return;
+		}
+
 		$file = dirname( __FILE__ ) . '/html/' . $this->slug . '.php';
 		if ( file_exists( $file ) ) {
 			include_once $file;
@@ -23,9 +40,22 @@ abstract class Tab {
 	}
 
 	public function set_tabs( $tabs ){
+		if ( SiteHealthFilter::is_debug_mode() ) {
+			return $tabs;
+		}
+
 		$title = str_replace( '_', ' ', $this->slug );
 		$title = ucfirst( $title );
 		$tabs[$this->slug] = __( $title, 'woocommerce' );
+		return $tabs;
+	}
+
+	public function unset_tabs( $tabs ){
+		if ( SiteHealthFilter::is_debug_mode() ) {
+			return $tabs;
+		}
+
+		unset($tabs[$this->slug]);
 		return $tabs;
 	}
 }
