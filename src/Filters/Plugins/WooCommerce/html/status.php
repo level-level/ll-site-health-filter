@@ -1,5 +1,5 @@
 <?php
-// phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+// phpcs:ignoreFile WordPress.WP.GlobalVariablesOverride.Prohibited
 
 global $wpdb;
 // This screen requires classes from the REST API.

@@ -17,8 +17,17 @@ abstract class Tab {
 
 	abstract public function register_hooks();
 
+
+	/**
+	 * Shows content for tabs
+	 *
+	 * @method set_content
+	 * @see https://github.com/woocommerce/woocommerce/blob/dda34e04551c9caf1ac5ddf79ed1dd9516824a98/includes/admin/views/html-admin-page-status.php
+	 * @return void
+	 */
 	public function set_content() {
 		if ( SiteHealthFilter::is_debug_mode() ) {
+			// Show default content, see https://github.com/woocommerce/woocommerce/blob/dda34e04551c9caf1ac5ddf79ed1dd9516824a98/includes/admin/views/html-admin-page-status.php
 			switch ( $this->slug ) {
 				case 'tools':
 					\WC_Admin_Status::status_tools();
@@ -46,7 +55,7 @@ abstract class Tab {
 
 		$title               = str_replace( '_', ' ', $this->slug );
 		$title               = ucfirst( $title );
-		$tabs[ $this->slug ] = __( $title, 'woocommerce' ); // phpcs:ingore WordPress.WP.I18n.NonSingularStringLiteralText
+		$tabs[ $this->slug ] = __( $title, 'woocommerce' ); // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
 		return $tabs;
 	}
 
