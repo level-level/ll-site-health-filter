@@ -2,19 +2,13 @@
 namespace Clarkson\Filters\SiteHealth;
 
 use Clarkson\Filters\SiteHealth\Filters\Core;
+use Clarkson\Filters\SiteHealth\Filters\Plugins;
 
-/**
- * SiteHealthFilter
- *
- * @author Level Level <info@level-level.com>
- * @license GPLv3
- * @package Clarkson
- * @subpackage Filters\SiteHealth
- */
 class SiteHealthFilter {
 
 	public function register_hooks() {
 		( new Core() )->register_hooks();
+		( new Plugins() )->register_hooks();
 	}
 
 	/**

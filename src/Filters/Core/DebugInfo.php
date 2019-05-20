@@ -4,14 +4,6 @@ namespace Clarkson\Filters\SiteHealth\Filters\Core;
 
 use Clarkson\Filters\SiteHealth\SiteHealthFilter;
 
-/**
- * DebugInfo
- *
- * @author Level Level <info@level-level.com>
- * @license GPLv3
- * @package Clarkson
- * @subpackage Filters\SiteHealth\Filters\Core
- */
 class DebugInfo {
 	public function register_hooks() {
 		add_filter( 'debug_information', array( $this, 'remove_debug_info' ) );
