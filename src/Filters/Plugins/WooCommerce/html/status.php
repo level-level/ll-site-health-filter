@@ -1,5 +1,5 @@
 <?php
-// phpcs:ignoreFile WordPress.WP.GlobalVariablesOverride.Prohibited
+// phpcs:disable WordPress.WP.GlobalVariablesOverride.Prohibited
 
 global $wpdb;
 // This screen requires classes from the REST API.
@@ -106,7 +106,7 @@ $pages         = $system_status->get_pages();
 			}
 			echo '<tr><td data-export-label="' . esc_attr( $page_name ) . '">' . wp_kses_post( $page_name ) . ':</td>';
 			/* Translators: %s: page name. */
-			echo '<td class="help">' . wc_help_tip( sprintf( esc_html__( 'The URL of your %s page (along with the Page ID).', 'woocommerce' ), $page_name ) ) . '</td><td>';
+			echo '<td class="help">' . wc_help_tip( sprintf( esc_html__( 'The URL of your %s page (along with the Page ID).', 'woocommerce' ), $page_name ) ) . '</td><td>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			// Page ID check.
 			if ( ! $page['page_set'] ) {
 				echo '<mark class="error"><span class="dashicons dashicons-warning"></span> ' . esc_html__( 'Page not set', 'woocommerce' ) . '</mark>';
