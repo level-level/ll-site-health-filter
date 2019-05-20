@@ -19,7 +19,7 @@ abstract class Tab {
 
 	public function set_content() {
 		if ( SiteHealthFilter::is_debug_mode() ) {
-			switch ($this->slug) {
+			switch ( $this->slug ) {
 				case 'tools':
 					\WC_Admin_Status::status_tools();
 					break;
@@ -39,23 +39,23 @@ abstract class Tab {
 		}
 	}
 
-	public function set_tabs( $tabs ){
+	public function set_tabs( $tabs ) {
 		if ( SiteHealthFilter::is_debug_mode() ) {
 			return $tabs;
 		}
 
-		$title = str_replace( '_', ' ', $this->slug );
-		$title = ucfirst( $title );
-		$tabs[$this->slug] = __( $title, 'woocommerce' );
+		$title               = str_replace( '_', ' ', $this->slug );
+		$title               = ucfirst( $title );
+		$tabs[ $this->slug ] = __( $title, 'woocommerce' ); // phpcs:ingore WordPress.WP.I18n.NonSingularStringLiteralText
 		return $tabs;
 	}
 
-	public function unset_tabs( $tabs ){
+	public function unset_tabs( $tabs ) {
 		if ( SiteHealthFilter::is_debug_mode() ) {
 			return $tabs;
 		}
 
-		unset($tabs[$this->slug]);
+		unset( $tabs[ $this->slug ] );
 		return $tabs;
 	}
 }

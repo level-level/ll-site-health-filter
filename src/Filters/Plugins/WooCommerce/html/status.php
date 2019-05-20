@@ -10,9 +10,9 @@ if ( ! class_exists( 'WC_REST_System_Status_Controller', false ) ) {
 	wp_die( 'Cannot load the REST API to access WC_REST_System_Status_Controller.' );
 }
 
-$system_status    = new \WC_REST_System_Status_Controller();
-$settings         = $system_status->get_settings();
-$pages            = $system_status->get_pages();
+$system_status = new \WC_REST_System_Status_Controller();
+$settings      = $system_status->get_settings();
+$pages         = $system_status->get_pages();
 
 ?>
 
