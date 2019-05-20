@@ -2,7 +2,8 @@
 
 namespace Clarkson\Filters\SiteHealth\Filters\Plugins;
 
-use Clarkson\Filters\SiteHealth\Filters\Plugins\WooCommerce\Example;
+use Clarkson\Filters\SiteHealth\Filters\Plugins\WooCommerce\Status;
+use Clarkson\Filters\SiteHealth\Filters\Plugins\WooCommerce\Tools;
 
 /**
  * WooCommerce
