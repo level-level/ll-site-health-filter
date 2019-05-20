@@ -135,3 +135,5 @@ $pages            = $system_status->get_pages();
 		?>
 	</tbody>
 </table>
+
+<?php do_action( 'woocommerce_system_status_report' ); ?>
