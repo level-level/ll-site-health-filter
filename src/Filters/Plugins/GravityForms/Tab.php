@@ -13,35 +13,14 @@ abstract class Tab {
 
 	abstract public function register_hooks();
 
-
-	/**
-	 * Shows content for tabs
-	 *
-	 * @method set_content
-	 * @see https://github.com/wp-premium/gravityforms/blob/3241d9c07b7b843ed74d04669c063169a7b8673e/includes/system-status/class-gf-system-status.php
-	 * @return void
-	 */
-	public function set_content() {
+	public function set_content( $content ) {
 		if ( SiteHealthFilter::is_debug_mode() ) {
-			// Show default content, see url above
-			switch ( $this->slug ) {
-				case 'report':
-					GF_System_Report::system_report();
-					break;
-				case 'updates':
-					GF_Update::updates();
-					break;
-				default:
-					do_action( "gform_system_status_page_{$this->slug}" );
-					break;
-			}
-			return;
+			return $content;
 		}
 
-		$file = dirname( __FILE__ ) . '/html/' . $this->slug . '.php';
-		if ( file_exists( $file ) ) {
-			include_once $file;
-		}
+		$content = array();
+
+		return $content;
 	}
 
 	public function set_tabs( $tabs ) {

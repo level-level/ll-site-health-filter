@@ -15,10 +15,10 @@ class SystemReport extends Tab {
 
 	public function register_hooks() {
 		add_filter( 'gform_system_status_menu', array( $this, 'unset_tabs' ), 10, 1 );
-		add_filter( 'gform_system_report', array( $this, 'set_system_report' ) );
+		add_filter( 'gform_system_report', array( $this, 'set_content' ) );
 	}
 
-	public function set_system_report( $report ) {
+	public function set_content( $report ) {
 		if ( SiteHealthFilter::is_debug_mode() ) {
 			return $report;
 		}

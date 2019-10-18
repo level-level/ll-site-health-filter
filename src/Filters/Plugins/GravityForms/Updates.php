@@ -15,16 +15,6 @@ class Updates extends Tab {
 
 	public function register_hooks() {
 		add_filter( 'gform_system_status_menu', array( $this, 'unset_tabs' ), 10, 1 );
-		add_filter( 'gform_updates_list', array( $this, 'set_updates_list' ), 100, 1 );
-	}
-
-	public function set_updates_list( $updates ) {
-		if ( SiteHealthFilter::is_debug_mode() ) {
-			return $updates;
-		}
-
-		$updates = array();
-
-		return $report;
+		add_filter( 'gform_updates_list', array( $this, 'set_content' ), 100, 1 );
 	}
 }
