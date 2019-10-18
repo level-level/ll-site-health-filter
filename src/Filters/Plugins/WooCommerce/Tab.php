@@ -4,6 +4,8 @@ namespace Clarkson\Filters\SiteHealth\Filters\Plugins\WooCommerce;
 
 use Clarkson\Filters\SiteHealth\SiteHealthFilter;
 
+use \WC_Admin_Status;
+
 abstract class Tab {
 	protected $slug;
 	protected $title;
@@ -23,13 +25,13 @@ abstract class Tab {
 			// Show default content, see url above
 			switch ( $this->slug ) {
 				case 'tools':
-					\WC_Admin_Status::status_tools();
+					WC_Admin_Status::status_tools();
 					break;
 				case 'logs':
-					\WC_Admin_Status::status_logs();
+					WC_Admin_Status::status_logs();
 					break;
 				default:
-					\WC_Admin_Status::status_report();
+					WC_Admin_Status::status_report();
 					break;
 			}
 			return;

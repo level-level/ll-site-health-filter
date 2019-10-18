@@ -2,6 +2,8 @@
 
 namespace Clarkson\Filters\SiteHealth\Filters\Plugins\WooCommerce;
 
+use Clarkson\Filters\SiteHealth\Filters\Plugins\WooCommerce\Tab;
+
 class Status extends Tab {
 	public function __construct() {
 		$this->title = __( 'System status', 'woocommerce' );
