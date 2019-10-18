@@ -36,7 +36,7 @@ class SystemReport extends Tab {
 								'label'        => esc_html__( 'Description', 'll_site_health_filter' ),
 								'label_export' => 'Description',
 								'value'        => esc_html__( 'Please contact your system administrator if you think you shouln\'t see this message.', 'll_site_health_filter' ),
-							)
+							),
 						),
 					),
 				),
