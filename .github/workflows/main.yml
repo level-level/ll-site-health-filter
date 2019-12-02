@@ -1,0 +1,29 @@
+name: Build & test
+
+on: [push]
+
+jobs:
+  php:
+    name: PHP test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+    - name: Set up Satis authentication
+      uses: docker://composer:1.8
+      env:
+        SATIS_DOMAIN: ${{ secrets.SATIS_DOMAIN }}
+        SATIS_USERNAME: ${{ secrets.SATIS_USERNAME }}
+        SATIS_PASSWORD: ${{ secrets.SATIS_PASSWORD }}
+      with:
+        args: composer config http-basic.${{ secrets.SATIS_DOMAIN }} ${{ secrets.SATIS_USERNAME }} ${{ secrets.SATIS_PASSWORD }}
+    - name: Composer Install dependencies
+      uses: docker://composer:1.8
+      with:
+        args: composer install --ignore-platform-reqs --prefer-dist  --no-suggest --no-progress
+    - name: Composer Test
+      uses: docker://composer:1.8
+      with:
+        args: composer run-script test
