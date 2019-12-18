@@ -1,3 +1,5 @@
+[![GitHub Actions status](https://github.com/level-level/ll-site-health-filter/workflows/Build%20%26%20test/badge.svg)](https://github.com/level-level/ll-site-health-filter/actions)
+
 # Site Health Filter <IN DEVELOPMENT>
 
 Solution to hide sensitive data from the Wordpress Site Health Tool in the admin sidebar menu.
