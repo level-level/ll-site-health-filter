@@ -36,6 +36,9 @@ abstract class Tab {
 		return $tabs;
 	}
 
+	/**
+	 * Remove the tab from the menu
+	 */
 	public function unset_tabs( $tabs ) {
 		if ( SiteHealthFilter::is_debug_mode() ) {
 			return $tabs;
