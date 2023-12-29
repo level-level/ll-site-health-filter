@@ -1,39 +1,13 @@
 <?xml version="1.0"?>
 <ruleset name="site_health_filter">
 	<description>Level Level Site Health Filter ruleset</description>
-	<config name="testVersion" value="7.0-"/>
+	<config name="testVersion" value="7.4-"/>
 	<file>./src</file>
 	<file>./ll-site-health-filter.php</file>
 
 	<arg name="colors"/>
 	<arg value="sp"/>
 
-	<rule ref="PHPCompatibility"/>
-	<rule ref="Squiz.PHP.CommentedOutCode"/>
-	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
-	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
-	<rule ref="Generic.Commenting.Todo"/>
-	<rule ref="Generic.ControlStructures.InlineControlStructure"/>
-
-	<rule ref="WordPress-Extra">
-		<exclude name="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents" clarification="Local files instead of always wp_remote_get" />
-	</rule>
-
-	<rule ref="WordPress-Core">
-		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
-		<exclude name="WordPress.NamingConventions.ValidVariableName.NotSnakeCase" />
-		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.Found" />
-		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
-		<exclude name="WordPress.NamingConventions.ValidHookName.UseUnderscores" clarification="Wonolog uses this hook naming scheme" />
-		<exclude name="WordPress.WP.I18n.MissingTranslatorsComment" clarification="Customer will handle translations themselves" />
-	</rule>
-
-	<rule ref="PEAR.NamingConventions.ValidClassName.Invalid" clarification="Clarkson searches for objects based on slug names">
-		<exclude-pattern>*/app/*</exclude-pattern>
-	</rule>
-
-	<rule ref="PEAR.NamingConventions.ValidClassName.StartWithCapital" clarification="Clarkson class names and class file names don't comply yet">
-		<exclude-pattern>*/app/*</exclude-pattern>
-	</rule>
+	<rule ref="LevelLevel"/>
 
 </ruleset>

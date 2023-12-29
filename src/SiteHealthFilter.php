@@ -16,13 +16,13 @@ class SiteHealthFilter {
 	 *
 	 * @return bool
 	 */
-	public static function is_debug_mode() : bool {
+	public static function is_debug_mode(): bool {
 		if (
 			(
 				( defined( 'WP_DEBUG' ) ? WP_DEBUG : false )
 				|| ( filter_input( INPUT_GET, 'show_debug', FILTER_SANITIZE_SPECIAL_CHARS ) === 'true' )
 			)
-			&& current_user_can( 'administrator' )
+			&& current_user_can( 'administrator' ) // phpcs:ignore WordPress.WP.Capabilities.RoleFound
 		) {
 			return true;
 		}

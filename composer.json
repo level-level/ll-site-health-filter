@@ -3,6 +3,13 @@
     "description": "Removes sensitive data from the Wordpress Site Health tool.",
     "type": "library",
     "license": "MIT",
+    "repositories": {
+        "packagist.org": false,
+        "private-packagist": {
+            "type": "composer",
+            "url": "https://repo.packagist.com/level-level/"
+        }
+    },
     "authors": [
         {
             "name": "Level Level",
@@ -10,7 +17,10 @@
         }
     ],
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "autoload": {
       "psr-4":{
@@ -18,13 +28,20 @@
       },
       "files": ["ll-site-health-filter.php"]
     },
-    "require": {
-    },
     "scripts": {
         "test":[
             "echo Running tests",
-            "composer validate",
-            "phpcs",
+            "@test:composer",
+            "@test:phpcs",
+            "@test:docs"
+        ],
+        "test:composer": [
+            "composer validate"
+        ],
+        "test:phpcs": [
+            "phpcs"
+        ],
+        "test:docs": [
             "php-doc-check ./src -x vendor"
         ],
         "fix":[
@@ -32,9 +49,7 @@
         ]
     },
     "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
-        "niels-de-blaauw/php-doc-check": "^0.2.2",
-        "phpcompatibility/php-compatibility": "^9.1",
-        "wp-coding-standards/wpcs": "^2.1"
+        "level-level/coding-standards": "^4.1",
+        "niels-de-blaauw/php-doc-check": "^0.2.2"
     }
 }

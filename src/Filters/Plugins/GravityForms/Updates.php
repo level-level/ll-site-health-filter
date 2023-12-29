@@ -2,8 +2,8 @@
 
 namespace Clarkson\Filters\SiteHealth\Filters\Plugins\GravityForms;
 
-use Clarkson\Filters\SiteHealth\SiteHealthFilter;
 use Clarkson\Filters\SiteHealth\Filters\Plugins\GravityForms\Tab;
+use Clarkson\Filters\SiteHealth\SiteHealthFilter;
 
 class Updates extends Tab {
 
