@@ -3,13 +3,6 @@
     "description": "Removes sensitive data from the Wordpress Site Health tool.",
     "type": "library",
     "license": "MIT",
-    "repositories": {
-        "packagist.org": false,
-        "private-packagist": {
-            "type": "composer",
-            "url": "https://repo.packagist.com/level-level/"
-        }
-    },
     "authors": [
         {
             "name": "Level Level",
@@ -49,7 +42,9 @@
         ]
     },
     "require-dev": {
-        "level-level/coding-standards": "^4.1",
-        "niels-de-blaauw/php-doc-check": "^0.2.2"
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "niels-de-blaauw/php-doc-check": "^0.2.2",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "wp-coding-standards/wpcs": "^3.0"
     }
 }
