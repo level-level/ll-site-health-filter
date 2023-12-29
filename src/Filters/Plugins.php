@@ -2,8 +2,8 @@
 
 namespace Clarkson\Filters\SiteHealth\Filters;
 
-use Clarkson\Filters\SiteHealth\Filters\Plugins\WooCommerce;
 use Clarkson\Filters\SiteHealth\Filters\Plugins\GravityForms;
+use Clarkson\Filters\SiteHealth\Filters\Plugins\WooCommerce;
 
 class Plugins {
 	public function register_hooks() {

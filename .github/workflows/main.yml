@@ -1,29 +1,66 @@
 name: Build & test
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'master'
+      - 'main'
+  pull_request_target:
+    branches:
+      - 'master'
+      - 'main'
 
 jobs:
   php:
     name: PHP test
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.4']
+        wp: ['6.3']
+        mysql: ['5.7']
+    services:
+      mysql:
+        image: mysql:${{ matrix.mysql }}
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: false
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-      with:
-        fetch-depth: 1
-    - name: Set up Satis authentication
-      uses: docker://composer:1.8
-      env:
-        SATIS_DOMAIN: ${{ secrets.SATIS_DOMAIN }}
-        SATIS_USERNAME: ${{ secrets.SATIS_USERNAME }}
-        SATIS_PASSWORD: ${{ secrets.SATIS_PASSWORD }}
-      with:
-        args: composer config http-basic.${{ secrets.SATIS_DOMAIN }} ${{ secrets.SATIS_USERNAME }} ${{ secrets.SATIS_PASSWORD }}
-    - name: Composer Install dependencies
-      uses: docker://composer:1.8
-      with:
-        args: composer install --ignore-platform-reqs --prefer-dist  --no-suggest --no-progress
-    - name: Composer Test
-      uses: docker://composer:1.8
-      with:
-        args: composer run-script test
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, dom, simplexml
+          tools: wp
+      - uses: actions/checkout@v3
+        with:
+          path: wp-content/plugins/ll-site-health-filter
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Debugging
+        run: |
+          php --version
+          php -m
+          composer --version
+      - name: Composer build
+        run: |
+          cd wp-content/plugins/ll-site-health-filter
+          composer config --global --auth http-basic.repo.packagist.com token "${{ secrets.PRIVATE_PACKAGIST_TOKEN }}"
+          composer install --prefer-dist
+        env:
+          PRIVATE_PACKAGIST_TOKEN: ${{ secrets.PRIVATE_PACKAGIST_TOKEN }}
+      - name: test:composer
+        run: |
+          cd wp-content/plugins/ll-site-health-filter
+          composer run test:composer
+      - name: test:phpcs
+        run: |
+          cd wp-content/plugins/ll-site-health-filter
+          composer run test:phpcs
+      - name: test:docs
+        run: |
+          cd wp-content/plugins/ll-site-health-filter
+          composer run test:docs

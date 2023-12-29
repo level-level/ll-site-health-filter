@@ -3,8 +3,8 @@
 namespace Clarkson\Filters\SiteHealth\Filters\Plugins\GravityForms;
 
 use Clarkson\Filters\SiteHealth\SiteHealthFilter;
-use \GF_System_Report;
-use \GF_Update;
+use GF_System_Report;
+use GF_Update;
 
 abstract class Tab {
 	protected $slug;

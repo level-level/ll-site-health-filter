@@ -4,7 +4,7 @@ namespace Clarkson\Filters\SiteHealth\Filters\Plugins\WooCommerce;
 
 use Clarkson\Filters\SiteHealth\SiteHealthFilter;
 
-use \WC_Admin_Status;
+use WC_Admin_Status;
 
 abstract class Tab {
 	protected $slug;
@@ -37,7 +37,7 @@ abstract class Tab {
 			return;
 		}
 
-		$file = dirname( __FILE__ ) . '/html/' . $this->slug . '.php';
+		$file = __DIR__ . '/html/' . $this->slug . '.php';
 		if ( file_exists( $file ) ) {
 			include_once $file;
 		}
